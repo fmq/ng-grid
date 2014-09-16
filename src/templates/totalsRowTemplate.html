@@ -1,0 +1,5 @@
+<div ng-style="{ height: col.headerRowHeight }" ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngHeaderCell ngTotalCell">
+    <div ng-show="col.colDef.showTotal" class="ngVerticalBar" ng-style="{height: col.headerRowHeight}" ng-class="{ ngVerticalBarVisible: !$last }">&nbsp;</div>
+    <div></div>
+    <div ng-total-cell></div>
+</div>"
