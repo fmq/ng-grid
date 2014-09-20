@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 09/16/2014 18:10
+* Compiled At: 09/20/2014 16:54
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -3946,9 +3946,9 @@ angular.module('ngGrid').run(['$templateCache', function($templateCache) {
     "    <div class=\"ngCanvas\" ng-style=\"canvasStyle()\">\n" +
     "        <div ng-style=\"rowStyle(row)\" ng-repeat=\"row in renderedRows\" ng-click=\"row.toggleSelected($event)\" ng-class=\"row.alternatingRowClass()\" ng-row></div>\n" +
     "    </div>\n" +
-    "</div>\n" +
-    "<div class=\"ngHeaderContainer\" ng-style=\"headerStyle()\">\n" +
-    "    <div ng-totals-row class=\"ngHeaderScroller\" ng-style=\"headerScrollerStyle()\"></div>\n" +
+    "   <div class=\"ngHeaderContainer\"  style=\"overflow:visible\" ng-style=\"headerStyle()\">\n" +
+    "      <div ng-totals-row class=\"ngHeaderScroller\" ng-style=\"headerScrollerStyle()\"></div>\n" +
+    "   </div>\n" +
     "</div>\n" +
     "<div ng-grid-footer></div>\n"
   );

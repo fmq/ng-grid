@@ -21,8 +21,8 @@
     <div class="ngCanvas" ng-style="canvasStyle()">
         <div ng-style="rowStyle(row)" ng-repeat="row in renderedRows" ng-click="row.toggleSelected($event)" ng-class="row.alternatingRowClass()" ng-row></div>
     </div>
-</div>
-<div class="ngHeaderContainer" ng-style="headerStyle()">
-    <div ng-totals-row class="ngHeaderScroller" ng-style="headerScrollerStyle()"></div>
+   <div class="ngHeaderContainer"  style="overflow:visible" ng-style="headerStyle()">
+      <div ng-totals-row class="ngHeaderScroller" ng-style="headerScrollerStyle()"></div>
+   </div>
 </div>
 <div ng-grid-footer></div>
