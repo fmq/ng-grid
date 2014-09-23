@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 09/20/2014 16:54
+* Compiled At: 09/23/2014 12:13
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -1557,7 +1557,6 @@ var ngGrid = function ($scope, options, sortService, domUtilityService, $filter,
                     var temp = ngColumn;
 
                     $scope.$on('$destroy', $scope.$on("ngGridEventData", function () {
-                        self.resizeOnData(temp);
                     }));
 
                     return;

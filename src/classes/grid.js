@@ -454,7 +454,7 @@ var ngGrid = function ($scope, options, sortService, domUtilityService, $filter,
                     var temp = ngColumn;
 
                     $scope.$on('$destroy', $scope.$on("ngGridEventData", function () {
-                        self.resizeOnData(temp);
+                        //self.resizeOnData(temp);
                     }));
 
                     return;
