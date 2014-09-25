@@ -27,6 +27,7 @@ var ngColumn = function (config, $scope, grid, domUtilityService, $templateCache
     self.cellClass = colDef.cellClass;
     self.sortPriority = undefined;
     self.cellFilter = colDef.cellFilter ? colDef.cellFilter : "";
+    self.totalFilter = colDef.totalFilter;
     self.field = colDef.field;
     self.aggLabelFilter = colDef.aggLabelFilter || colDef.cellFilter;
     self.visible = $utils.isNullOrUndefined(colDef.visible) || colDef.visible;

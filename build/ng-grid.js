@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 09/25/2014 11:22
+* Compiled At: 09/25/2014 17:01
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -738,6 +738,7 @@ var ngColumn = function (config, $scope, grid, domUtilityService, $templateCache
     self.cellClass = colDef.cellClass;
     self.sortPriority = undefined;
     self.cellFilter = colDef.cellFilter ? colDef.cellFilter : "";
+    self.totalFilter = colDef.totalFilter;
     self.field = colDef.field;
     self.aggLabelFilter = colDef.aggLabelFilter || colDef.cellFilter;
     self.visible = $utils.isNullOrUndefined(colDef.visible) || colDef.visible;
