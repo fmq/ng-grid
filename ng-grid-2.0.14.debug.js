@@ -2,11 +2,11 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 09/23/2014 12:13
+* Compiled At: 09/25/2014 11:22
 ***********************************************/
 (function(window, $) {
 'use strict';
-// the # of rows we want to add to the top and bottom of the rendered grid rows 
+// the # of rows we want to add to the top and bottom of the rendered grid rows
 var EXCESS_ROWS = 6;
 var SCROLL_THRESHOLD = 4;
 var ASC = "asc";
@@ -27,6 +27,7 @@ var FUNC_REGEXP = /(\([^)]*\))?$/;
 var DOT_REGEXP = /\./g;
 var APOS_REGEXP = /'/g;
 var BRACKET_REGEXP = /^(.*)((?:\s*\[\s*\d+\s*\]\s*)|(?:\s*\[\s*"(?:[^"\\]|\\.)*"\s*\]\s*)|(?:\s*\[\s*'(?:[^'\\]|\\.)*'\s*\]\s*))(.*)$/;
+var TOTAL_FILTERS = /TOTAL_FILTERS/g;
 
 window.ngGrid = {};
 window.ngGrid.i18n = {};
@@ -772,7 +773,7 @@ var ngColumn = function (config, $scope, grid, domUtilityService, $templateCache
     // TODO: Use the column's definition for enabling cell editing
     // self.enableCellEdit = config.enableCellEdit || colDef.enableCellEdit;
     self.enableCellEdit = colDef.enableCellEdit !== undefined ? colDef.enableCellEdit : (config.enableCellEdit || config.enableCellEditOnFocus);
-    
+
     self.cellEditableCondition = colDef.cellEditableCondition || config.cellEditableCondition || 'true';
 
     self.headerRowHeight = config.headerRowHeight;
@@ -809,6 +810,7 @@ var ngColumn = function (config, $scope, grid, domUtilityService, $templateCache
     self.cursor = self.sortable ? 'pointer' : 'default';
     self.headerCellTemplate = colDef.headerCellTemplate || $templateCache.get('headerCellTemplate.html');
     self.cellTemplate = colDef.cellTemplate || $templateCache.get('cellTemplate.html').replace(CUSTOM_FILTERS, self.cellFilter ? "|" + self.cellFilter : "");
+    self.totalCellTemplate = $templateCache.get('totalCellTemplate.html').replace(TOTAL_FILTERS, self.totalFilter ? "|" + self.totalFilter : "");
     if(self.enableCellEdit) {
         self.cellEditTemplate = colDef.cellEditTemplate || $templateCache.get('cellEditTemplate.html');
         self.editableCellTemplate = colDef.editableCellTemplate || $templateCache.get('editableCellTemplate.html');
@@ -3665,7 +3667,7 @@ ngGridDirectives.directive('ngTotalCell', ['$compile', '$templateCache', functio
         compile: function() {
             return {
                 pre: function($scope, iElement) {
-                    var html = $compile($templateCache.get('totalCellTemplate.html'))($scope);
+                    var html = $compile($scope.col.totalCellTemplate)($scope);
                     iElement.append(html);
                 }
             };
@@ -4005,7 +4007,7 @@ angular.module('ngGrid').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('totalCellTemplate.html',
-    "<div class=\"ngTotalText {{col.headerClass}}\" ng-class=\"col.colIndex()\"><span ng-show=\"col.colDef.showTotal\">{{col.colDef.total | moneda}}</span></div>\n"
+    "<div class=\"ngTotalText {{col.headerClass}}\" ng-class=\"col.colIndex()\"><span ng-show=\"col.colDef.showTotal\">{{col.colDef.total TOTAL_FILTERS}}</span></div>\n"
   );
 
 

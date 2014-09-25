@@ -4,7 +4,7 @@ ngGridDirectives.directive('ngTotalCell', ['$compile', '$templateCache', functio
         compile: function() {
             return {
                 pre: function($scope, iElement) {
-                    var html = $compile($templateCache.get('totalCellTemplate.html'))($scope);
+                    var html = $compile($scope.col.totalCellTemplate)($scope);
                     iElement.append(html);
                 }
             };
